@@ -28,10 +28,8 @@
 @property (nonatomic,strong) NSNumber *discount;
 @property (nonatomic,strong) NSNumber *type_price;
 
--(Result *)initWithDictionary:(NSDictionary *)data;
-
 @end
-/*[{"id":"11221427676",
+/*[{"   id":"11221427676",
  "brand":"BMW",
  "brand_id":"511",
  "article":"11427635557",

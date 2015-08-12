@@ -9,9 +9,6 @@
 #import "MatchesCell.h"
 
 @implementation MatchesCell
-{
-    NSArray *_match;
-}
 @synthesize label;
 
 -(void)setItem:(Match *)data

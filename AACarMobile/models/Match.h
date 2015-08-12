@@ -18,8 +18,6 @@
 @property (nonatomic,strong) NSString *label;
 @property (nonatomic,strong) NSString *brand_logo;
 
--(id) initWithDictionary:(NSDictionary *)data;
-
 @end
 /*
  {"query":"481582008",

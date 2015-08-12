@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JTObjectMapping.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13DE8C40EDCE3C06503D1CCE8EBF1D77</key>
+		<key>163F86A45D47A40C9D60210384F1BF20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +42,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>313612E356402C585BB2D78621E07370</key>
+		<key>A4A6FD68319240946FEBBD8A7608A4D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6547F319C1179EE89EE91386CA1EF1C8</key>
+		<key>E58C0AF92F1F6C8A3E412F67C92A0A79</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4264A31F7DE6706F5ACA80C5E0ED355</key>
 		<dict>
 			<key>primary</key>
 			<true/>

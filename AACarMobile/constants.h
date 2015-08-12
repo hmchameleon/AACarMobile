@@ -10,3 +10,4 @@
 #define URL_MATCH @"http://api.aacar.ru/rest/search?term&query="
 
 #define EVENT_MATCHES_UPLOADED @"EVENT_MATCHES_UPLOADED"
+#define EVENT_RESULTS_UPLOADED @"EVENT_RESULTS_UPLOADED"

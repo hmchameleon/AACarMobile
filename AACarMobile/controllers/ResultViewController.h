@@ -10,6 +10,4 @@
 
 @interface ResultViewController : UITableViewController
 
-@property (nonatomic,weak) IBOutlet UILabel *label;
-
 @end

@@ -92,7 +92,6 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [textField resignFirstResponder];
     [[DataStorage sharedManager] uploadsMatches:textField.text];
-    [[DataStorage sharedManager] uploadsResults:@"asd"];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField

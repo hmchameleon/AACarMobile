@@ -10,24 +10,6 @@
 
 @implementation Match
 
-@synthesize idt, value, datat, pid, brand, label, brand_logo;
-
--(id) initWithDictionary:(NSDictionary *)data
-{
-    if (self=[super init])
-    {
-        idt = data[@"id"];
-        //value = data [@"value"];
-        //datat = data [@"data"];
-        pid = data[@"pid"];
-        brand = data[@"brand"];
-        label = data[@"label"];
-        //brand_logo = data [@"brand_logo"];
-    }
-    return self;
-
-}
-
 @end
 /*
 "id":"4815820080",
