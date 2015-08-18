@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Result.h"
+#import "Seller.h"
 
-@interface SellerViewController : UIViewController
+@interface SellerViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic,weak) IBOutlet UILabel *label;
+@property (nonatomic, strong) Seller *seller;
 
 -(IBAction)onMapClick:(id)sender;
 
--(void)setResult:(Result *)data;
+-(void)setResult:(NSNumber *)idt;
 
 @end

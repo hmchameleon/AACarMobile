@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataSource.h"
 
-@interface DataSourceResults : NSObject
+@interface DataSourceResults : DataSource
+{
+    NSInteger _pageTotal;
+    NSInteger _pageCurrent;
+}
+
+@property (nonatomic,strong) NSNumber *article;
+@property (nonatomic,strong) NSString *brand;
+
+- (void) uploadResults:(DataSourceEnum )option;
 
 @end

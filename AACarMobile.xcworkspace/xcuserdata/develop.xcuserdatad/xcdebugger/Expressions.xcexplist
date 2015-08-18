@@ -17,6 +17,52 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[SellerViewController viewWillAppear:]:SellerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_seller">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DataSourceResults uploadData]:DataSourceResults.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_pageTotal">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ResultViewController viewDidAppear:]:ResultViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__31-[DataSourceResults uploadData]_block_invoke:DataSourceResults.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[DataSourceResults init]:DataSourceResults.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.results">
+            </PersistentString>
+            <PersistentString
+               value = "_results">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ResultViewController prepareForSegue:sender:]:ResultViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_result">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ViewController onSearchClick:]:ViewController.m">
          <PersistentStrings>
             <PersistentString

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ResultViewController : UITableViewController
+@interface ResultViewController : UITableViewController <UIScrollViewDelegate, UIAlertViewDelegate>
+
+- (void)setBrand:(NSString *)brand;
+- (void)setArticle:(NSNumber *)article;
 
 @end

@@ -7,7 +7,37 @@
 //
 
 #import "DataSourceMatch.h"
+#import "Match.h"
 
 @implementation DataSourceMatch
+
+-(void)uploadsMatches:(NSString *)searchStr
+{
+    if(self.results)
+        [self.results removeAllObjects];
+    
+    /*NSString* str1 = @"est un rêve en noir првиет";
+     NSURL *url = [NSURL URLWithString:[str1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+     NSLog(@"%@", url);*/
+    //NSString *formatedStr = [searchStr stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSString *formatedStr = [[NSString alloc] initWithFormat:@"%@%@",URL_MATCH,searchStr];
+    self.url = [NSURL URLWithString:[formatedStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self uploadData];
+}
+
+-(void)response:(id)result
+{
+    NSDictionary *mapping = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"idt", @"id",nil];
+    NSSet * suggestions = (NSSet *)[result objectForKey:@"suggestions"];
+    NSArray * array = [suggestions allObjects];
+    for(int i = 0; i < array.count; i++) {
+        Match *match = [Match objectFromJSONObject:array[i] mapping:mapping];
+        [self.results addObject:match];
+    }
+    [super response:result];
+}
+
 
 @end

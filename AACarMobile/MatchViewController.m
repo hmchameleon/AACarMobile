@@ -7,41 +7,48 @@
 //
 
 #import "MatchViewController.h"
-#import "DataStorage.h"
+#import "DataSourceMatch.h"
 #import "constants.h"
 #import "MatchesCell.h"
 #import <MBProgressHUD.h>
+#import "ResultViewController.h"
 
 @interface MatchViewController ()<UITableViewDataSource>
 {
     NSArray *_matches;
     NSInteger _index;
+    DataSourceMatch *_dataSource;
+    NSTimer *_timer;
 }
 @end
 
 @implementation MatchViewController
-@synthesize textField;
+@synthesize textField,beginnerView,beginnerLabel;
 
 #pragma mark - init controllers
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _matches = [NSArray new];
+    _dataSource = [[DataSourceMatch alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(notify:) name:EVENT_MATCHES_UPLOADED object:nil];
+    [nc addObserver:self selector:@selector(notify:) name:EVENT_RESULTS_UPLOADED object:nil];
+    [nc addObserver:self selector:@selector(notifyError:) name:EVENT_UPLOADED_ERROR object:nil];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_MATCHES_UPLOADED object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_RESULTS_UPLOADED object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_UPLOADED_ERROR object:nil];
 }
 
 -(void) notify:(NSNotification *) note
@@ -53,10 +60,27 @@
         });
         return;
     }
-    
-    _matches = [[DataStorage sharedManager] getMatches];
+
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [self.tableView reloadData];
+    _matches = _dataSource.results;
+    if(_matches.count == 0)
+    {
+        beginnerLabel.text = @"По данному запросу ничего не найдено";
+        [self.beginnerView setHidden:NO];
+    }
+    else
+    {
+        [self.tableView reloadData];
+        [self.beginnerView setHidden:YES];
+    }
+}
+
+-(void)notifyError:(NSDictionary *)note
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Ошибка при получении данных" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [av show];
+    NSLog(@"matchError");
 }
 
 #pragma mark - table functions
@@ -89,9 +113,16 @@
 
 -(IBAction)onSearchClick:(id)sender
 {
+    if([textField.text  isEqual:@""])
+    {
+        [beginnerView setHidden:NO];
+        [beginnerLabel setText:@"Введите в строке поиска название искомой запчасти"];
+        [textField resignFirstResponder];
+        return;
+    }
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [textField resignFirstResponder];
-    [[DataStorage sharedManager] uploadsMatches:textField.text];
+    [_dataSource uploadsMatches:textField.text];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -101,11 +132,51 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval: WAITING_MATCH
+                                              target: self
+                                            selector:@selector(onTick)
+                                            userInfo: nil repeats:NO];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [_timer invalidate];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [_timer invalidate];
+    if(!(([string isEqual:@""]) && range.location==0))
+    {
+        _timer = [NSTimer scheduledTimerWithTimeInterval: WAITING_MATCH
+                                              target: self
+                                            selector:@selector(onTick)
+                                            userInfo: nil repeats:NO];
+    }
+    else
+    {
+        [beginnerLabel setText:@"Введите в строке поиска название искомой запчасти"];
+        [beginnerView setHidden:NO];
+    }
+    return true;
+}
+
+-(void)onTick
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_timer invalidate];
+    [_dataSource uploadsMatches:textField.text];
+}
+
 #pragma mark - prepare segues
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    ResultViewController *rvc = (ResultViewController *)segue.destinationViewController;
+    [rvc setBrand:[_matches[_index] brand]];
+    [rvc setArticle:[_matches[_index] article]];
 }
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "Seller.h"
+#import <NSObject+JTObjectMapping.h>
+#import <AFNetworking.h>
+#import "constants.h"
 
 @implementation Seller
 

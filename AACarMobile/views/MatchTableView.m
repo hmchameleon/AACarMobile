@@ -8,7 +8,6 @@
 
 #import "MatchTableView.h"
 #import "constants.h"
-#import "DataStorage.h"
 #import "MatchesCell.h"
 
 @implementation MatchTableView

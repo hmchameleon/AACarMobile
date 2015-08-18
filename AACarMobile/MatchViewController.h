@@ -13,6 +13,8 @@
 
 @property (nonatomic, weak) IBOutlet MatchTableView *tableView;
 @property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic ,weak) IBOutlet UIView *beginnerView;
+@property (nonatomic, weak) IBOutlet UILabel *beginnerLabel;
 
 -(IBAction) onSearchClick:(id)sender;
 

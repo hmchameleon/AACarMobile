@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "Seller.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic,weak) IBOutlet MKMapView *mapView;
+
+-(void)setAnnotation:(Seller *)seller;
 
 @end

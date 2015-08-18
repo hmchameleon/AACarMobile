@@ -10,4 +10,6 @@
 
 @interface DataSourceMatch : DataSource
 
+-(void)uploadsMatches:(NSString *)searchStr;
+
 @end

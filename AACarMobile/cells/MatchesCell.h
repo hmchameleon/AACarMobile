@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataStorage.h"
 #import "Match.h"
 
 @interface MatchesCell : UITableViewCell
