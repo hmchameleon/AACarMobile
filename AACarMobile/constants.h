@@ -16,4 +16,14 @@
 #define EVENT_UPLOADED          @"EVENT_UPLOADED"
 #define EVENT_UPLOADED_ERROR    @"EVENT_UPLOADED_ERROR"
 
-#define WAITING_MATCH 5
+#define WAITING_MATCH           5
+
+#define BEGIN_TEXT_FIELD_TAG    100
+#define COUNT_TEXT_FIELD        4
+#define TAG_OF_NUMBER_FIELD     103
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)

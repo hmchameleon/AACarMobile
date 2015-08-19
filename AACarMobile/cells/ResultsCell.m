@@ -10,24 +10,28 @@
 #import "Result.h"
 @implementation ResultsCell
 
-@synthesize label;
+@synthesize labelBrand,labelCity,labelCommentCost,labelNumber,labelName,labelCost,labelCount,labelPhone,labelTime,nameSeller,buy;
 
 -(void)setItem:(Result *)data
 {
-    //label.text = [data valueForKey:@"brand"];
-    NSString *str = [[NSString alloc] initWithFormat:@"%@\n%@\n%@",data.brand,data.product_name,data.cost_rub];
-    NSMutableAttributedString *astr = [[NSMutableAttributedString alloc] initWithString:str];
-    [astr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0] range:NSMakeRange(0, data.brand.length)];
-    [astr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0] range:NSMakeRange(data.brand.length,data.product_name.length+1)];
-    [astr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0] range:NSMakeRange(data.brand.length + data.product_name.length+1 ,str.length - (data.brand.length + data.product_name.length+1))];
-    /*NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0] range:NSMakeRange(0, data.brand.length)];
-    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0] range:NSMakeRange(data.brand.length, data.product_name.length+1)];//data.brand.length+data.label.length
-    //[str setAttributedString:[[NSAttributedString*/
-    //label.attributedText = attrStr;
-    label.attributedText = astr;
+    _data = data;
+    labelBrand.text = data.brand;
+    labelCity.text = [NSString stringWithFormat:@"%@",data.city];
+    labelCount.text = [NSString stringWithFormat:@"%@",data.quantity];
+    labelCommentCost.text = data.comment_cost;
+    labelCost.text = [NSString stringWithFormat:@"%@",data.cost_rub];
+    labelName.text = data.product_name;
+    labelPhone.text = data.phones[0];
+    labelTime.text = data.delivery_time;
+    labelNumber.text = [NSString stringWithFormat:@"%@",data.article];
     
+    [nameSeller setTitle:data.name forState:UIControlStateNormal ];
+    [nameSeller setTitle:data.name forState:UIControlStateHighlighted];
 }
 
+- (Result *)getResult;
+{
+    return _data;
+}
 
 @end

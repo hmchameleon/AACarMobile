@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A2B885A50D8DBD1B21455C8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E03FC9AD133FC412346C1418 /* libPods.a */; };
+		BA1684D41B835C5000F78FAB /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1684D31B835C5000F78FAB /* OrderViewController.m */; };
 		BAEBE4701B78E999004978CB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEBE46F1B78E999004978CB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BAEBE4741B78F361004978CB /* MatchesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEBE4731B78F361004978CB /* MatchesCell.m */; };
 		BAEBE47C1B78FB4F004978CB /* MatchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEBE47B1B78FB4F004978CB /* MatchTableView.m */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		1724451493A3C181A6B59EC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9084BF3817C2EA897AF2A3D3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BA1684D21B835C5000F78FAB /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderViewController.h; path = controllers/OrderViewController.h; sourceTree = "<group>"; };
+		BA1684D31B835C5000F78FAB /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderViewController.m; path = controllers/OrderViewController.m; sourceTree = "<group>"; };
 		BAEBE46E1B78E999004978CB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		BAEBE46F1B78E999004978CB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		BAEBE4721B78F361004978CB /* MatchesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MatchesCell.h; path = cells/MatchesCell.h; sourceTree = "<group>"; };
@@ -129,6 +132,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BA1684D11B835C1F00F78FAB /* OrderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BA1684D21B835C5000F78FAB /* OrderViewController.h */,
+				BA1684D31B835C5000F78FAB /* OrderViewController.m */,
+			);
+			name = OrderViewController;
+			sourceTree = "<group>";
+		};
 		BAEBE46C1B78E999004978CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +170,7 @@
 		BAEBE4751B78F6FA004978CB /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA1684D11B835C1F00F78FAB /* OrderViewController */,
 				BAFF3BE91B7B932A00880944 /* MapViewController */,
 				BAFF3BE31B7B702800880944 /* SellerViewController */,
 				BAF6AC3B1B7A2D4E00F799FF /* ResultViewController */,
@@ -517,6 +530,7 @@
 				BAFF3BEC1B7B934D00880944 /* MapViewController.m in Sources */,
 				BAF2D4CE1B7CD65F00097911 /* DataSourceResults.m in Sources */,
 				BAFF3BE61B7B705F00880944 /* SellerViewController.m in Sources */,
+				BA1684D41B835C5000F78FAB /* OrderViewController.m in Sources */,
 				BAEBE4701B78E999004978CB /* JSONKit.m in Sources */,
 				BAF5DDDA1B7E1923006687D9 /* DataSourceMatch.m in Sources */,
 				BAFF3BE21B7B62A800880944 /* ResultsCell.m in Sources */,

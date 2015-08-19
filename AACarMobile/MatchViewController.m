@@ -31,6 +31,7 @@
     [super viewDidLoad];
     _matches = [NSArray new];
     _dataSource = [[DataSourceMatch alloc] init];
+    
     // Do any additional setup after loading the view, typically from a nib.
     
 }
@@ -110,6 +111,13 @@
 }
 
 #pragma mark - actions
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([textField isFirstResponder])// && [touch view] != textField)
+        [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];}
 
 -(IBAction)onSearchClick:(id)sender
 {

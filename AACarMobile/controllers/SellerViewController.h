@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Seller.h"
 
-@interface SellerViewController : UIViewController <UIAlertViewDelegate>
+@interface SellerViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate>
 
-@property (nonatomic,weak) IBOutlet UILabel *label;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) Seller *seller;
 
 -(IBAction)onMapClick:(id)sender;

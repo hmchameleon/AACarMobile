@@ -9,6 +9,9 @@
 #import "DataSource.h"
 
 @implementation DataSource
+{
+    AFHTTPRequestOperation *_operation;
+}
 
 @synthesize results = _results;
 
@@ -25,17 +28,21 @@
 {
     NSLog(@"url %@",_url);
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:_url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id localResponseObject)
+    if(_operation)
+    {
+        [_operation cancel];
+        _operation = nil;
+    }
+    _operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    _operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [_operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *_operation, id localResponseObject)
      {
          [self response:localResponseObject];
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@", error);
          [self responseError];
      }];
-    [operation start];
+    [_operation start];
 }
 
 -(void)responseError

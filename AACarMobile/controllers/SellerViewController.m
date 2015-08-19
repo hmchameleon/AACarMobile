@@ -18,9 +18,10 @@
     NSNumber *_user_id;
     BOOL _reload;
     NSNumber *_s_idt;
+    NSDictionary *_sellerDict;
 }
 
-@synthesize label;
+@synthesize tableView;
 
 @synthesize seller = _seller;
 
@@ -53,14 +54,16 @@
 
 - (void) updateView
 {
-    NSString *str = [[NSString alloc] initWithFormat:@"%@\n%@",_seller.company,_seller.contact_info];
+    /*NSString *str = [[NSString alloc] initWithFormat:@"%@\n%@",_seller.company,_seller.contact_info];
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
     [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0] range:NSMakeRange(0, _seller.company.length)];
-    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0] range:NSMakeRange(_seller.company.length, _seller.contact_info.length+1)];//data.brand.length+data.label.length
+    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0] range:NSMakeRange(_seller.company.length, _seller.contact_info.length+1)];//data.brand.length+data.label.length*/
     //[str setAttributedString:[[NSAttributedString
-    label.attributedText = attrStr;
-    _reload = NO;
+    /*label.attributedText = attrStr;
+    _reload = NO;*/
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    _reload = NO;
+    [tableView reloadData];
 }
 
 -(void)notifyError:(NSDictionary *)note
@@ -85,8 +88,15 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    MapViewController *mvc = (MapViewController *) segue.destinationViewController;
-    [mvc setAnnotation:_seller];
+    if([segue.identifier isEqual:@"mapSegue"])
+    {
+        MapViewController *mvc = (MapViewController *) segue.destinationViewController;
+        [mvc setAnnotation:_seller];
+    }
+    /*    else if()
+    {
+        
+    }*/
 }
 
 - (void)updateSeller:(NSNumber *)idt
@@ -102,6 +112,7 @@
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
          {
              _seller = [Seller objectFromJSONObject:responseObject mapping:nil];
+             _sellerDict = responseObject;
              [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_RESULTS_UPLOADED object:nil];
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -122,6 +133,23 @@
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - table view delegate
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[_sellerDict allKeys] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sellerCell" forIndexPath:indexPath];
+    //cell.textLabel.text = self.tempDict[self.sortedKeys[indexPath.section]][indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",[_sellerDict objectForKey:[[_sellerDict allKeys] objectAtIndex:indexPath.row]]];
+    return cell;
 }
 
 @end

@@ -16,6 +16,8 @@
 @interface ResultViewController ()
 {
     BOOL isLoading;
+    
+    Result *_rslt;
 }
 
 @end
@@ -102,15 +104,22 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    _index = indexPath.row;
+    _rslt = _result[indexPath.row];
     [self performSegueWithIdentifier:@"sellerSegue" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    SellerViewController *vc = (SellerViewController *)segue.destinationViewController;
-    Result *result = _result[_index];
-    [vc setResult:result.user_id];
+    if([segue.identifier isEqualToString:@"sellerSegue"])
+    {
+        SellerViewController *vc = (SellerViewController *)segue.destinationViewController;
+        if (_rslt != nil)
+            [vc setResult:_rslt.user_id];
+    }
+    else if([segue.identifier isEqualToString:@"orderSegue"])
+    {
+        
+    }
 }
 
 - (void) updateSource:(DataSourceEnum)option
@@ -171,6 +180,24 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - buttons active
+
+-(IBAction)onNameSellerClick:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    ResultsCell * cell = nil;
+    
+    cell = (ResultsCell *)[[btn superview] superview];
+
+    _rslt = [cell getResult];
+    [self performSegueWithIdentifier:@"sellerSegue" sender:self];
+}
+
+-(IBAction)onBuyClick:(id)sender
+{
+    [self performSegueWithIdentifier:@"orderSegue" sender:self];
 }
 
 @end

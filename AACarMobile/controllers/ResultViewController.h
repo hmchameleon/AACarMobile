@@ -10,6 +10,10 @@
 
 @interface ResultViewController : UITableViewController <UIScrollViewDelegate, UIAlertViewDelegate>
 
+-(IBAction)onBuyClick:(id)sender;
+-(IBAction)onNameSellerClick:(id)sender;
+
+
 - (void)setBrand:(NSString *)brand;
 - (void)setArticle:(NSNumber *)article;
 

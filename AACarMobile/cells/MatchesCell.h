@@ -11,7 +11,9 @@
 
 @interface MatchesCell : UITableViewCell
 
-@property (nonatomic,weak) IBOutlet UILabel *label;
+@property (nonatomic,weak) IBOutlet UILabel *labelBrand;
+@property (nonatomic,weak) IBOutlet UILabel *labelNumber;
+@property (nonatomic,weak) IBOutlet UILabel *labelName;
 
 -(void) setItem:(Match *)data;
 

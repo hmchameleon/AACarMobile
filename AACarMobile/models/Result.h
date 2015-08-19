@@ -16,11 +16,11 @@
 @property (nonatomic,strong) NSString *brand;
 @property (nonatomic,strong) NSNumber *brand_id;
 @property (nonatomic,strong) NSString *product_name;
-@property (nonatomic,strong) NSString *city;
+@property (nonatomic,strong) NSNumber *city;
 @property (nonatomic,strong) NSNumber *sale;
 @property (nonatomic,strong) NSNumber *quantity;
 @property (nonatomic,strong) NSNumber *cost_rub;
-@property (nonatomic,strong) NSNumber *delivery_time;
+@property (nonatomic,strong) NSString *delivery_time;
 @property (nonatomic,strong) NSNumber *delivery;
 @property (nonatomic,strong) NSNumber *update_date;
 @property (nonatomic,strong) NSNumber *option_only_seller;
@@ -28,6 +28,8 @@
 @property (nonatomic,strong) NSNumber *discount;
 @property (nonatomic,strong) NSNumber *type_price;
 @property (nonatomic,strong) NSNumber *user_id;
+@property (nonatomic,strong) NSArray *phones;
+@property (nonatomic,strong) NSString *name;
 
 @end
 /*
