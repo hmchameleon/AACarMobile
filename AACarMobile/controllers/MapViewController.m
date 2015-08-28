@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "MyAnnotation.h"
+#import "UIViewController+NBNavButtonViewControllers.h"
 
 @implementation MapViewController
 {
@@ -25,6 +26,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setupBackButton];
     CLLocationCoordinate2D crdAnnotation = CLLocationCoordinate2DMake([_seller.coordinates[0] doubleValue],[_seller.coordinates[1] doubleValue] );
     MKCoordinateRegion region;
     MKCoordinateSpan span;
@@ -35,7 +37,7 @@
     [mapView setRegion:region animated:TRUE];
     [mapView regionThatFits:region];
     
-    _ma = [[MyAnnotation alloc] initWithTitle:_seller.company Subtitle:_seller.address Location:crdAnnotation];
+    _ma = [[MyAnnotation alloc] initWithTitle:_seller.company Subtitle:[_seller modelAsArray][1] Location:crdAnnotation];
     [mapView addAnnotation:_ma];
 }
 

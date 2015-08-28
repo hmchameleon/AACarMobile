@@ -23,5 +23,7 @@ typedef enum{
 
 -(void)uploadData;
 -(void)response:(id)result;
+-(void)responseError;
+-(void)destroyOperation;
 
 @end

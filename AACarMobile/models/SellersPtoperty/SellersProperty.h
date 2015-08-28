@@ -6,8 +6,12 @@
 //  Copyright (c) 2015 Develop. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface SellersProperty : NSObject
+
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *value;
+@property (nonatomic, retain) UIImage *myImage;
 
 @end

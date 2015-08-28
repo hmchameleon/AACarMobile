@@ -1,5 +1,8 @@
+GCC_ENABLE_CPP_EXCEPTIONS = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/JTObjectMapping" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/SBJson"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/JTObjectMapping" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/SBJson"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"JTObjectMapping" -l"MBProgressHUD" -l"SBJson" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+GCC_WARN_64_TO_32_BIT_CONVERSION = NO
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/JTObjectMapping" "${PODS_ROOT}/Headers/Public/KSCrash" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/SBJson" "${PODS_ROOT}/Headers/Public/YandexMobileMetrica" "${PODS_ROOT}/Headers/Public/protobuf-c" "${PODS_ROOT}/Headers/Public/protobuf-c/protobuf-c"
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/YandexMobileMetrica"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/FMDB" -isystem "${PODS_ROOT}/Headers/Public/JTObjectMapping" -isystem "${PODS_ROOT}/Headers/Public/KSCrash" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/SBJson" -isystem "${PODS_ROOT}/Headers/Public/YandexMobileMetrica" -isystem "${PODS_ROOT}/Headers/Public/protobuf-c" -isystem "${PODS_ROOT}/Headers/Public/protobuf-c/protobuf-c"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"FMDB" -l"JTObjectMapping" -l"KSCrash" -l"MBProgressHUD" -l"SBJson" -l"YandexMobileMetrica" -l"c++" -l"protobuf-c" -l"sqlite3" -l"z" -framework "AdSupport" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreTelephony" -framework "Foundation" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 PODS_ROOT = ${SRCROOT}/Pods

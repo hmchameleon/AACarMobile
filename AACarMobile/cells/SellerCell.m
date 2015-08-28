@@ -9,5 +9,12 @@
 #import "SellerCell.h"
 
 @implementation SellerCell
+@synthesize textLabel,imageView;
+
+-(void)setItem:(NSString *)info withImage:(UIImage *)image
+{
+    textLabel.text = info;
+    imageView.image = image;
+}
 
 @end

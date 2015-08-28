@@ -18,6 +18,6 @@
 @property (nonatomic,strong) NSNumber *article;
 @property (nonatomic,strong) NSString *brand;
 
-- (void) uploadResults:(DataSourceEnum )option;
+- (void) uploadResults:(DataSourceEnum )option withFilters:(NSDictionary*)filters;
 
 @end

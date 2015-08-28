@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NBImage.h"
 
 @interface NavigationController : UINavigationController
 

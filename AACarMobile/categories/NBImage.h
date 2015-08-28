@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NBImage : UIImage
+@interface UIImage (NBImage)
+
++ (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius;
++(UIImage *)imageBorderFromColor:(UIColor *)color forSize:(CGSize)size borderWidth:(float)width withCornerRadius:(CGFloat)radius;
 
 @end

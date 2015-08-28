@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JTObjectMapping.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KSCrash.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,10 +39,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>protobuf-c.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>163F86A45D47A40C9D60210384F1BF20</key>
+		<key>0E2F17529B24DA295632742464A56E48</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,17 +57,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4A6FD68319240946FEBBD8A7608A4D7</key>
+		<key>2E78647F6EE53AE11146D74E6B01443F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E58C0AF92F1F6C8A3E412F67C92A0A79</key>
+		<key>60FBC8C47324F61D1F1151B47D5AD925</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F4264A31F7DE6706F5ACA80C5E0ED355</key>
+		<key>9BEF003FE7BC99AD025EA70BFF0FF5A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2EAC90493731CFA840A61649F88D3FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8F512414DB9311368158F2E11CCBA65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EED91BD59376CF9E6E55209BEF5CE052</key>
 		<dict>
 			<key>primary</key>
 			<true/>

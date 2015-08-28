@@ -9,5 +9,20 @@
 #import "FiltersCell.h"
 
 @implementation FiltersCell
+{
+    NSAttributedString *_filter;
+    NSAttributedString *_value;
+}
+
+@synthesize nameFilter, valueFilter;
+
+-(void)setItem:(NSAttributedString *)filter withValue:(NSAttributedString *)value
+{
+    _filter = filter;
+    _value = value;
+    nameFilter.attributedText = _filter;
+    valueFilter.attributedText = _value;
+
+}
 
 @end

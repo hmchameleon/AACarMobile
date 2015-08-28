@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void) uploadResults:(DataSourceEnum )option
+- (void) uploadResults:(DataSourceEnum )option withFilters:(NSDictionary *)filters
 {
     BOOL end=NO;
     switch (option) {
@@ -51,11 +51,9 @@
     
     if(!end)
     {
-        //http://api.aacar.ru/rest/products/11427635557/brand/BMW?page=2&per-page=50
-        
-        NSString *brand = [_brand stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-        self.url = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:URL_RESULT,_article, brand ,(long)_pageCurrent]];
-        NSLog(@"url %@ %@",_article,_brand);
+        NSString *strFilters = [self dictionaryToString:filters];
+        //NSLog(@"url %@",[[NSString alloc] initWithFormat:URL_RESULT,_article, _brand ,_pageCurrent,strFilters]);
+        self.url = [[NSURL alloc] initWithString:[[[NSString alloc] initWithFormat:URL_RESULT,_article, _brand ,_pageCurrent,strFilters] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]];
         [self uploadData];
     }
 }
@@ -72,12 +70,26 @@
         [_results addObject:match];
     }
     
-    [super response:result];
+    [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_RESULTS_UPLOADED object:nil];
 }
 
-- (void)fail:(NSError *)error
+-(void)responseError
 {
-    //
+    [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_RESULTS_ERROR object:nil];
+}
+
+-(NSString *)dictionaryToString:(NSDictionary *)dict
+{
+    NSMutableString *str = [[NSMutableString alloc] init];
+    NSArray *keys = [dict allKeys];
+    for (int i = 0; i<[keys count]; i++) {
+        [str appendFormat:@"\"%@\":%@,",keys[i],[dict objectForKey:keys[i]] ];
+    }
+    if (keys.count != 0) {
+        [str deleteCharactersInRange:NSMakeRange(str.length -1 , 1)];
+    }
+    NSLog(@"str %@",str);
+    return str;
 }
 
 @end

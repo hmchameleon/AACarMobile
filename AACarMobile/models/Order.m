@@ -10,4 +10,19 @@
 
 @implementation Order
 
+-(id)init
+{
+    if(self=[super init])
+    {
+        self.product_id = @"";
+        self.product_name = @"";
+        self.phone = @"";
+        self.first_name = @"";
+        self.email = @"";
+        self.comment = @"";
+        self.callback = @"";
+    }
+    return self;
+}
+
 @end

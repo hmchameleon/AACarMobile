@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "constants.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [YMMYandexMetrica activateWithApiKey:APP_API_KEY];
     return YES;
 }
 

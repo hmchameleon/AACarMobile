@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[SellerViewController viewWillAppear:]:SellerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_seller">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DataStorage uploadsMatches:]:DataStorage.m">
          <PersistentStrings>
             <PersistentString
@@ -17,10 +25,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[SellerViewController viewWillAppear:]:SellerViewController.m">
+         contextName = "-[SellerViewController tableView:didSelectRowAtIndexPath:]:SellerViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "_seller">
+               value = "">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

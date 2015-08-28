@@ -4,3 +4,4 @@ pod "AFNetworking"
 pod "SBJson"
 pod "MBProgressHUD"
 pod "JTObjectMapping"
+pod 'YandexMobileMetrica'

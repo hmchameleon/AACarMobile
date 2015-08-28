@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SellersProperty.h"
 
 @interface Seller : NSObject
 
@@ -24,6 +25,10 @@
 @property (nonatomic,strong) NSString *region_name;
 @property (nonatomic,strong) NSString *site;
 @property (nonatomic,strong) NSString *time_work;
+
+-(NSArray *)modelKeysAsArray;
+-(NSArray *)modelAsArray;
+-(NSArray *)modelsImageAsArray;
 
 @end
 

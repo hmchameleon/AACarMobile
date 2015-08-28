@@ -10,4 +10,7 @@
 
 @interface SellerCell : UITableViewCell
 
+@property (nonatomic,weak) IBOutlet UIImageView *imageView;
+@property (nonatomic,weak) IBOutlet UILabel *textLabel;
+
 @end

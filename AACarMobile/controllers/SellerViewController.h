@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Seller.h"
 
-@interface SellerViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate>
+@interface SellerViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate  >
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *myTableView;
+@property (nonatomic, weak) IBOutlet UIButton *rootButton;
 @property (nonatomic, strong) Seller *seller;
 
 -(IBAction)onMapClick:(id)sender;
+-(IBAction)onRootViewClick:(id)sender;
 
 -(void)setResult:(NSNumber *)idt;
+
+
 
 @end

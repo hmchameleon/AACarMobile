@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Order.h"
 
 @interface SendManager : NSObject
+
++(SendManager *)sharedManager;
+-(void) sendOrder:(Order *)data;
+-(void)destroyOperation;
 
 @end

@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CategoriesView : UIView
+@protocol SetFilter
+
+-(void)setValueFilter:(id)object forKey:(NSString *)key;
+
+@end
+
+@interface CategoriesView : UIView <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic,weak) IBOutlet UITableView *tableView;
+@property (nonatomic,weak) IBOutlet UIView *variableView;
+@property (nonatomic,weak) id<SetFilter> delegate;
+
+-(void)setItem:(NSArray *)data forKey:(NSString *)key;
 
 @end

@@ -30,6 +30,7 @@
 @property (nonatomic,strong) NSNumber *user_id;
 @property (nonatomic,strong) NSArray *phones;
 @property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *address;
 
 @end
 /*

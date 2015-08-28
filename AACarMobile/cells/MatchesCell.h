@@ -14,6 +14,7 @@
 @property (nonatomic,weak) IBOutlet UILabel *labelBrand;
 @property (nonatomic,weak) IBOutlet UILabel *labelNumber;
 @property (nonatomic,weak) IBOutlet UILabel *labelName;
+@property (nonatomic,weak) IBOutlet UIImageView *directionImageView;
 
 -(void) setItem:(Match *)data;
 

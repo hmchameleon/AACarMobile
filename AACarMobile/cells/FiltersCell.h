@@ -10,4 +10,9 @@
 
 @interface FiltersCell : UITableViewCell
 
+@property (nonatomic,weak) IBOutlet UILabel *nameFilter;
+@property (nonatomic,weak) IBOutlet UILabel *valueFilter;
+
+-(void) setItem:(NSAttributedString *)filter withValue:(NSAttributedString *)value;
+
 @end

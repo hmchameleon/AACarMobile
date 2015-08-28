@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YandexMobileMetrica.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

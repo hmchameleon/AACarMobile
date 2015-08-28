@@ -12,6 +12,7 @@
 #import "MatchesCell.h"
 #import <MBProgressHUD.h>
 #import "ResultViewController.h"
+#import "NBImage.h"
 
 @interface MatchViewController ()<UITableViewDataSource>
 {
@@ -23,7 +24,7 @@
 @end
 
 @implementation MatchViewController
-@synthesize textField,beginnerView,beginnerLabel;
+@synthesize textField,beginnerView,beginnerLabel,searchButton;
 
 #pragma mark - init controllers
 
@@ -31,25 +32,27 @@
     [super viewDidLoad];
     _matches = [NSArray new];
     _dataSource = [[DataSourceMatch alloc] init];
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    
+    //[textField setBackground:[UIImage imageFromColor:[UIColor colorWithRed:72.0/255 green:162.0/255 blue:17.0/255 alpha:1.0] forSize:textField.frame.size withCornerRadius:5.5]];
+    
+    
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(notify:) name:EVENT_RESULTS_UPLOADED object:nil];
-    [nc addObserver:self selector:@selector(notifyError:) name:EVENT_UPLOADED_ERROR object:nil];
+    [nc addObserver:self selector:@selector(notify:) name:EVENT_MATCHES_UPLOADED object:nil];
+    [nc addObserver:self selector:@selector(notifyError:) name:EVENT_MATCHES_ERROR object:nil];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_RESULTS_UPLOADED object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_UPLOADED_ERROR object:nil];
+    [_dataSource destroyOperation];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_MATCHES_UPLOADED object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:EVENT_MATCHES_ERROR object:nil];
 }
 
 -(void) notify:(NSNotification *) note
@@ -100,12 +103,15 @@
 {
     MatchesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reusableCell"];
     [cell setItem:_matches[indexPath.row]];
+    cell.selectedBackgroundView = [UIView new];
+    cell.selectedBackgroundView.backgroundColor = LIGHT_GREEN_COLOR;
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [_timer invalidate];
     _index = indexPath.row;
     [self performSegueWithIdentifier:@"resultSegue" sender:self];
 }
@@ -114,14 +120,14 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch = [[event allTouches] anyObject];
     if ([textField isFirstResponder])// && [touch view] != textField)
         [self.view endEditing:YES];
     [super touchesBegan:touches withEvent:event];}
 
 -(IBAction)onSearchClick:(id)sender
 {
-    if([textField.text  isEqual:@""])
+    [_timer invalidate];
+    if([textField.text  isEqualToString:@""])
     {
         [beginnerView setHidden:NO];
         [beginnerLabel setText:@"Введите в строке поиска название искомой запчасти"];
@@ -132,6 +138,27 @@
     [textField resignFirstResponder];
     [_dataSource uploadsMatches:textField.text];
 }
+
+-(void)onTick
+{
+    [_timer invalidate];
+    if(![textField.text isEqualToString:@""])
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [_dataSource uploadsMatches:textField.text];
+    }
+}
+
+#pragma mark - prepare segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ResultViewController *rvc = (ResultViewController *)segue.destinationViewController;
+    [rvc setBrand:[_matches[_index] brand]];
+    [rvc setArticle:[_matches[_index] article]];
+}
+
+#pragma mark - textfield delegate
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -150,7 +177,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [_timer invalidate];
+    //[_timer invalidate];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -159,9 +186,9 @@
     if(!(([string isEqual:@""]) && range.location==0))
     {
         _timer = [NSTimer scheduledTimerWithTimeInterval: WAITING_MATCH
-                                              target: self
-                                            selector:@selector(onTick)
-                                            userInfo: nil repeats:NO];
+                                                  target: self
+                                                selector:@selector(onTick)
+                                                userInfo: nil repeats:NO];
     }
     else
     {
@@ -169,22 +196,6 @@
         [beginnerView setHidden:NO];
     }
     return true;
-}
-
--(void)onTick
-{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_timer invalidate];
-    [_dataSource uploadsMatches:textField.text];
-}
-
-#pragma mark - prepare segues
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ResultViewController *rvc = (ResultViewController *)segue.destinationViewController;
-    [rvc setBrand:[_matches[_index] brand]];
-    [rvc setArticle:[_matches[_index] article]];
 }
 
 @end

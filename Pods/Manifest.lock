@@ -20,20 +20,42 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - JTObjectMapping (1.1.2)
+  - KSCrash/Recording (0.0.4)
+  - KSCrash/Reporting/Filters/AppleFmt (0.0.4):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/Base (0.0.4):
+    - KSCrash/Recording
   - MBProgressHUD (0.9.1)
+  - protobuf-c (1.0.1)
   - SBJson (4.0.2)
+  - YandexMobileMetrica (2.0.0):
+    - FMDB (~> 2.2)
+    - KSCrash/Recording (~> 0.0.4)
+    - KSCrash/Reporting/Filters/AppleFmt (~> 0.0.4)
+    - protobuf-c (~> 1.0.1)
 
 DEPENDENCIES:
   - AFNetworking
   - JTObjectMapping
   - MBProgressHUD
   - SBJson
+  - YandexMobileMetrica
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   JTObjectMapping: 179cae6acadb27be5b7f5c019c216cb99d28e112
+  KSCrash: a17f93c9b300753bf66dd7d72260cace0d307b1b
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  protobuf-c: 87088f5a154d5293d9c75b44fc48b497056f4e76
   SBJson: c18691cc18375b14664ff0fec841f8c4faef1934
+  YandexMobileMetrica: 09b508688e95cd16ee472c6afdd01f3c78f05365
 
 COCOAPODS: 0.38.2

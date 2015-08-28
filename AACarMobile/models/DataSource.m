@@ -53,7 +53,12 @@
 
 -(void)response:(id)result
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_RESULTS_UPLOADED object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_UPLOADED object:nil];
+}
+
+-(void)destroyOperation
+{
+    [_operation cancel];
 }
 
 @end

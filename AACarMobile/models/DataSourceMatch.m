@@ -36,8 +36,12 @@
         Match *match = [Match objectFromJSONObject:array[i] mapping:mapping];
         [self.results addObject:match];
     }
-    [super response:result];
+    [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_MATCHES_UPLOADED object:nil];
 }
 
+-(void)responseError
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:EVENT_MATCHES_ERROR object:nil];
+}
 
 @end
